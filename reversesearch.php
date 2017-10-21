@@ -51,3 +51,17 @@ $response = file_get_contents("https://incandescent.xyz/api/add/", FALSE, $conte
 ?>
 
 // have to wait at least 5 seconds before calling this
+
+<?php
+
+$data = array("uid"=>$uid,"expires"=>$expires,"auth"=>$auth,"project_id"=>$project_id);
+$json = json_encode($data);
+$context = stream_context_create(array(
+		'http' => array(
+			'method' => 'POST',
+			"Content-Type: application/json\r\n",
+			'content' => $json
+		)
+	));
+$response = file_get_contents("https://incandescent.xyz/api/get/", FALSE, $context);
+?>
