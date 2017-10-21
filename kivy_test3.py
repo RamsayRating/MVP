@@ -13,7 +13,7 @@ class RootWidget(FloatLayout):
         # let's add a Widget to this layout
         self.add_widget(
             Button(
-                text="Hello World",
+                text="Take Picture",
                 size_hint=(.5, .5),
                 pos_hint={'center_x': .5, 'center_y': .5}))
 
@@ -23,9 +23,12 @@ class MainApp(App):
     def build(self):
         self.root = root = RootWidget()
         root.bind(size=self._update_rect, pos=self._update_rect)
+        #print size
+        #print pos
 
         with root.canvas.before:
-            Color(0, .2, .8, 1)  # green; colors range from 0-1 not 0-255
+            #Color(0, .2, .8, 1)  # green; colors range from 0-1 not 0-255
+            Color(.238, .174, .238)
             self.rect = Rectangle(size=root.size, pos=root.pos)
         return root
 
